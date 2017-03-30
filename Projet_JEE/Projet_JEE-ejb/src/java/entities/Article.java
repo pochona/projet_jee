@@ -35,6 +35,13 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Article.findByStock", query = "SELECT a FROM Article a WHERE a.stock = :stock")})
 public class Article implements Serializable {
 
+    @Basic(optional = false)
+    @NotNull
+    @Lob
+    @Size(min = 1, max = 65535)
+    @Column(name = "DESCRIPTION")
+    private String description;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -138,6 +145,14 @@ public class Article implements Serializable {
     @Override
     public String toString() {
         return "entities.Article[ id=" + id + " ]";
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
     
 }
