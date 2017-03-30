@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package metier;
+package metier_Teyssie;
 
 import controllers.ArticleFacadeLocal;
 import entities.Article;
