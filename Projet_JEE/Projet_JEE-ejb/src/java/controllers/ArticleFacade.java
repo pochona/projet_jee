@@ -28,5 +28,6 @@ public class ArticleFacade extends AbstractFacade<Article> implements ArticleFac
     public ArticleFacade() {
         super(Article.class);
     }
+
     
 }
