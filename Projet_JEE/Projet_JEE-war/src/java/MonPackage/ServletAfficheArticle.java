@@ -11,19 +11,26 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 import java.util.function.Consumer;
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import metier.GestionArticleLocal;
 
 /**
  *
- * @author ameli
+ * @author Amélien Mersch
  */
-@WebServlet(name = "ListeArt", urlPatterns = {"/ListeArt"})
-public class ListeArt extends HttpServlet {
 
+@WebServlet(name = "AfficheDuPremierArticle", urlPatterns = {"/AfficheDuPremierArticle"})
+public class ServletAfficheArticle extends HttpServlet {
+
+    @EJB
+    private GestionArticleLocal gestionArticle;
+    
+    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -36,23 +43,30 @@ public class ListeArt extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        
+        String id = request.getParameter("id");
+        String libelle = request.getParameter("libelle");
+        String pHT = request.getParameter("pHt");
+        String tauxTVA = request.getParameter("tauxTVA");
+        String stock = request.getParameter("stock");
+        
+        
         try (PrintWriter out = response.getWriter()) {
+            libelle = gestionArticle.afficheArticle(1);
+            
+            
+            
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ListeArt</title>");            
+            out.println("<title>Servlet de la liste des articles</title>");            
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet ListeArt at " + request.getContextPath() + "</h1>");
             
-            Article a = new Article();
-            ArticleFacade af = new ArticleFacade();
-            
-                    
-            Object o;
-            o = af.findAll();
-            
+            out.println("<h1>L'article avec l'ID 1 a pour libellé : "+libelle+"</h1>");
+
             
             out.println("</body>");
             out.println("</html>");

@@ -21,6 +21,8 @@ public interface ArticleFacadeLocal {
     void edit(Article article);
 
     void remove(Article article);
+    
+    //void affiche(Article arcticle);
 
     Article find(Object id);
 
@@ -29,5 +31,7 @@ public interface ArticleFacadeLocal {
     List<Article> findRange(int[] range);
 
     int count();
+    
+    public String afficheArticle(Integer i);
     
 }

@@ -1,0 +1,7 @@
+/Projet_JEE_Shared/build/
+/Projet_JEE/build/
+/Projet_JEE_Shared/dist/
+/Projet_JEE/Projet_JEE-war/build/
+/Projet_JEE/Projet_JEE-ejb/dist/
+*.class
+/Projet_JEE/Projet_JEE-war/dist/

@@ -9,6 +9,7 @@ import entities.Article;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -29,5 +30,13 @@ public class ArticleFacade extends AbstractFacade<Article> implements ArticleFac
         super(Article.class);
     }
 
+    @Override
+    public String afficheArticle(Integer i){
+            Query q = em.createQuery(
+               "select LIB from Article a where a.ID = :i");
+            q.setParameter("ID", i);
+            Article a = (Article) q.getSingleResult();
+            return a.getLib();
+        }
     
 }
